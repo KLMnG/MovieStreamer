@@ -1,9 +1,9 @@
-public class System {
+public class SystemManager {
 
     private boolean connectionStatus;
     private int availableSpace;
 
-    public System(boolean connectionStatus, int availableSpace) {
+    public SystemManager(boolean connectionStatus, int availableSpace) {
         this.connectionStatus = connectionStatus;
         this.availableSpace = availableSpace;
     }

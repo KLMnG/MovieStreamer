@@ -78,6 +78,26 @@ public class OffState implements MovieStreamerState{
 
     @Override
     public void turnOff() {
-        //System.out.println("Already Off");
+        //SystemManager.out.println("Already Off");
+    }
+
+    @Override
+    public void setState(MovieStreamerState state) {
+
+    }
+
+    @Override
+    public void entry() {
+
+    }
+
+    @Override
+    public void exit() {
+
+    }
+
+    @Override
+    public void Do() {
+
     }
 }
