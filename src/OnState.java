@@ -5,6 +5,7 @@ public class OnState implements MovieStreamerState{
     private OnState connectionStatusRegion;
 
     protected MovieStreamer context;
+
     private MovieStreamerState downloadHistory;
 
     public OnState(MovieStreamer streamer){
