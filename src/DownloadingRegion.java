@@ -13,6 +13,8 @@ public class DownloadingRegion extends InternetConnectedState {
 
     public void setState(MovieStreamerState state){
         this.currentState = state;
+        this.currentState.entry();
+        this.currentState.Do();
     }
 
 
