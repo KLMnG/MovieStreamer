@@ -1,5 +1,9 @@
 public class BeginnerState extends UserManagerRegion{
-    public BeginnerState(MovieStreamer streamer) {
+    MovieStreamerState superContext;
+    MovieStreamer streamer;
+    String name;
+
+    public BeginnerState(MovieStreamer streamer,MovieStreamerState superContext) {
         super(streamer);
     }
 

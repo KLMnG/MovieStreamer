@@ -35,15 +35,13 @@ public class MovieStreamer {
     private MovieStreamerState pauseState;
     private MovieStreamerState streamingState;
 
-    private System system;
+    private SystemManager systemManager;
 
     private MovieStreamerState currentState;
     private File currentDownloadFile;
-    private MovieStreamerState onState;
-    private MovieStreamerState offState;
+
     private MovieStreamerState advancedState;
     private MovieStreamerState userManagerRegion;
-    private MovieStreamerState currentState;
     private MovieStreamerState beginnerState;
     private MovieStreamerState advencedState;
     private MovieStreamerState professionalState;
@@ -53,12 +51,12 @@ public class MovieStreamer {
         onState = new OnState(this);
         offState = new OffState(this);
         userManagerRegion = new UserManagerRegion(this);
-        beginnerState=new BeginnerState(this);
+        beginnerState=new BeginnerState(this,userManagerRegion);
         advencedState=new AdvancedState(this,userManagerRegion);
         professionalState=new ProfessionalState(this);
         user = new User();
         fileReuqestQueue = new PriorityQueue<>();
-        system = new System(false,100);
+        systemManager = new SystemManager(false,100);
     }
 
 
@@ -71,7 +69,7 @@ public class MovieStreamer {
         return offState;
     }
 
-    public void setState(MovieStreamerState state) {
+
     public MovieStreamerState getInternetConnectionRegion() {
         return internetConnectionRegion;
     }
@@ -174,7 +172,15 @@ public class MovieStreamer {
         return currentDownloadFile;
     }
 
-    public System getSystem() {
-        return system;
+    public SystemManager getSystemManager() {
+        return systemManager;
+    }
+
+    public MovieStreamerState getProfessionalState() {
+        return professionalState;
+    }
+
+    public void decreaseUserLevel(int i) {
+        this.user.setLevel(this.user.getLevel() - i);
     }
 }

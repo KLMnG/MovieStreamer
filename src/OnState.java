@@ -8,6 +8,26 @@ public class OnState implements MovieStreamerState{
 
     private MovieStreamerState downloadHistory;
 
+    @Override
+    public void setState(MovieStreamerState state) {
+
+    }
+
+    @Override
+    public void entry() {
+
+    }
+
+    @Override
+    public void exit() {
+
+    }
+
+    @Override
+    public void Do() {
+
+    }
+
     public OnState(MovieStreamer streamer){
         this.context = streamer;
     }
@@ -79,7 +99,7 @@ public class OnState implements MovieStreamerState{
 
     @Override
     public void turnOn() {
-        System.out.println("Already On");
+
     }
 
     @Override

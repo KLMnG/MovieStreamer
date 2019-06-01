@@ -82,7 +82,9 @@ public class AdvancedState extends UserManagerRegion{
 
     @Override
     public void removed() {
-        superContext.holdMovie();
+        exit();
+        this.streamer.decreaseUserLevel(1);
+        superContext.setState(streamer.getAdvancedState());
     }
 
     @Override
@@ -115,7 +117,7 @@ public class AdvancedState extends UserManagerRegion{
         if (streamer.getUserLevel()>=7) {
             exit();
             streamer.setDownLoadSpeed(1.5);
-            superContext.setState(streamer.getAdvencedState());
+            superContext.setState(streamer.getProfessionalState());
         }
     }
 
