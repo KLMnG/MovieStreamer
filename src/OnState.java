@@ -9,9 +9,6 @@ public class OnState implements MovieStreamerState{
 
     public OnState(MovieStreamer streamer){
         this.context = streamer;
-        this.userManagerRegion = new UserManagerRegion(streamer);
-        this.internetConnectionRegion = new InternetConnectedState(streamer);
-        this.connectionStatusRegion = new ConnectionStatusRegion(streamer);
     }
 
     @Override
