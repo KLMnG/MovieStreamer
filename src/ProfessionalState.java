@@ -1,86 +1,21 @@
 public class ProfessionalState extends UserManagerRegion{
-    public ProfessionalState(MovieStreamer streamer) {
-        super(streamer);
+
+    MovieStreamerState superContext;
+    MovieStreamer streamer;
+    String name;
+
+
+    public ProfessionalState(MovieStreamer streamer, MovieStreamerState superContext) {
+        super(streamer,null);
+        this.streamer = streamer;
+        this.superContext = superContext;
+        this.name = "ProfessionalState";
     }
 
     @Override
     public void movieOn() {
-        super.movieOn();
-    }
 
-    @Override
-    public void doneDownload() {
-        super.doneDownload();
-    }
 
-    @Override
-    public void holdMovie() {
-        super.holdMovie();
-    }
-
-    @Override
-    public void downloadError() {
-        super.downloadError();
-    }
-
-    @Override
-    public void restart() {
-        super.restart();
-    }
-
-    @Override
-    public void downloadAborted() {
-        super.downloadAborted();
-    }
-
-    @Override
-    public void resume() {
-        super.resume();
-    }
-
-    @Override
-    public void errorFixed() {
-        super.errorFixed();
-    }
-
-    @Override
-    public void moviePending() {
-        super.moviePending();
-    }
-
-    @Override
-    public void internetOff() {
-        super.internetOff();
-    }
-
-    @Override
-    public void internetOn() {
-        super.internetOn();
-    }
-
-    @Override
-    public void fileRequest() {
-        super.fileRequest();
-    }
-
-    @Override
-    public void removed() {
-        super.removed();
-    }
-
-    @Override
-    public void turnOn() {
-        super.turnOn();
-    }
-
-    @Override
-    public void turnOff() {
-        super.turnOff();
-    }
-
-    @Override
-    public void setState(OnState state) {
-        super.setState(state);
     }
 
     @Override
@@ -89,17 +24,98 @@ public class ProfessionalState extends UserManagerRegion{
     }
 
     @Override
-    public void entry() {
+    public void doneDownload() {
+        exit();
+        this.streamer.increaseUserLevel(1);
+        superContext.setState(streamer.getProfessionalState());
 
     }
 
     @Override
-    public void exit() {
+    public void holdMovie() {
 
+    }
+
+    @Override
+    public void downloadError() {
+
+    }
+
+    @Override
+    public void restart() {
+
+    }
+
+    @Override
+    public void downloadAborted() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void errorFixed() {
+
+    }
+
+    @Override
+    public void moviePending() {
+
+    }
+
+    @Override
+    public void internetOff() {
+
+    }
+
+    @Override
+    public void internetOn() {
+
+    }
+
+    @Override
+    public void fileRequest() {
+
+    }
+
+    @Override
+    public void removed() {
+        exit();
+        this.streamer.decreaseUserLevel(1);
+        superContext.setState(streamer.getProfessionalState());
+    }
+
+    @Override
+    public void turnOn() {
+
+    }
+
+    @Override
+    public void turnOff() {
+
+    }
+
+
+    @Override
+    public void entry() {
+        System.out.println("enter " + name + " state");
+    }
+
+    @Override
+    public void exit() {
+        System.out.println("exit " + name + " state");
     }
 
     @Override
     public void Do() {
 
+        if (streamer.getUserLevel()<7) {
+            exit();
+            streamer.setDownLoadSpeed(1.2);
+            superContext.setState(streamer.getAdvancedState());
+        }
     }
 }

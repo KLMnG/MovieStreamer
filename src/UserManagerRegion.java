@@ -1,5 +1,11 @@
 public class UserManagerRegion extends OnState {
-    public UserManagerRegion(MovieStreamer streamer) {
+
+
+    private MovieStreamerState currentState;
+    private MovieStreamerState superContext;
+
+
+    public UserManagerRegion(MovieStreamer streamer,MovieStreamerState superContext) {
         super(streamer);
     }
 }

@@ -50,10 +50,10 @@ public class MovieStreamer {
     public MovieStreamer() {
         onState = new OnState(this);
         offState = new OffState(this);
-        userManagerRegion = new UserManagerRegion(this);
+        userManagerRegion = new UserManagerRegion(this,);
         beginnerState=new BeginnerState(this,userManagerRegion);
         advencedState=new AdvancedState(this,userManagerRegion);
-        professionalState=new ProfessionalState(this);
+        professionalState=new ProfessionalState(this,userManagerRegion);
         user = new User();
         fileReuqestQueue = new PriorityQueue<>();
         systemManager = new SystemManager(false,100);
@@ -154,10 +154,6 @@ public class MovieStreamer {
 
     public MovieStreamerState getBeginnerState() {
         return beginnerState;
-    }
-
-    public MovieStreamerState getAdvencedState() {
-        return advencedState;
     }
 
     public Queue<File> getFileReuqestQueue() {

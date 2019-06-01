@@ -5,7 +5,7 @@ public class AdvancedState extends UserManagerRegion{
     String name;
 
     public AdvancedState(MovieStreamer streamer, MovieStreamerState superContext) {
-        super(streamer);
+        super(streamer,null);
         this.streamer = streamer;
         this.superContext = superContext;
         this.name = "AdvancedState";
@@ -13,7 +13,6 @@ public class AdvancedState extends UserManagerRegion{
 
     @Override
     public void movieOn() {
-        this.superContext.movieOn();
 
     }
 
@@ -32,52 +31,50 @@ public class AdvancedState extends UserManagerRegion{
 
     @Override
     public void holdMovie() {
-        superContext.holdMovie();
     }
 
     @Override
     public void downloadError() {
-        superContext.holdMovie();
+
     }
 
     @Override
     public void restart() {
-        superContext.holdMovie();
+
     }
 
     @Override
     public void downloadAborted() {
-        superContext.holdMovie();
+        superContext.downloadAborted();
     }
 
     @Override
     public void resume() {
-        superContext.holdMovie();
+
     }
 
     @Override
     public void errorFixed() {
-        superContext.holdMovie();
     }
 
     @Override
     public void moviePending() {
-        superContext.holdMovie();
+
     }
 
     @Override
     public void internetOff() {
-        superContext.holdMovie();
+
     }
 
     @Override
     public void internetOn() {
-        superContext.holdMovie();
+
     }
 
     @Override
     public void fileRequest() {
-        superContext.holdMovie();
+
     }
 
     @Override
@@ -89,12 +86,12 @@ public class AdvancedState extends UserManagerRegion{
 
     @Override
     public void turnOn() {
-        superContext.holdMovie();
+
     }
 
     @Override
     public void turnOff() {
-        superContext.holdMovie();
+
     }
 
     @Override
