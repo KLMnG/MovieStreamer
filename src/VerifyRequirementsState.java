@@ -19,7 +19,7 @@ public class VerifyRequirementsState extends DownloadingRegion{
     public void exit() {
         if (context.getSystem().getAvailableSpace() >= context.getCurrentDownloadFile().getRequiredSize()){
             context.getCurrentDownloadFile().setDownloaded(0);
-       //     superContext.setState();
+            superContext.setState(context.getDownloadState());
         }
         else{
 
