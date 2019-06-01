@@ -29,4 +29,8 @@ public class MovieStreamer {
     public void setState(MovieStreamerState state){
         this.currentState = state;
     }
+
+    public Queue<File> getFileReuqestQueue() {
+        return fileReuqestQueue;
+    }
 }
