@@ -10,7 +10,7 @@ public class MovieStreamer {
     private MovieStreamerState offState;
 
     private MovieStreamerState currentState;
-
+    private File currentDownloadFile;
 
     public MovieStreamer(){
         onState = new OnState(this);
@@ -32,5 +32,9 @@ public class MovieStreamer {
 
     public Queue<File> getFileReuqestQueue() {
         return fileReuqestQueue;
+    }
+
+    public File getCurrentDownloadFile() {
+        return currentDownloadFile;
     }
 }
