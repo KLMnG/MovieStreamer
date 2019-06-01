@@ -1,0 +1,2 @@
+public class DownloadSate {
+}
