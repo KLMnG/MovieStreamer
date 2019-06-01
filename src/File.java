@@ -20,4 +20,8 @@ public class File {
     public int getDownloaded() {
         return downloaded;
     }
+
+    public void setDownloaded(int downloaded) {
+        this.downloaded = downloaded;
+    }
 }
