@@ -1,4 +1,4 @@
-public interface MovieStreamerState {
+public interface MovieStreamerState extends State{
 
     public void movieOn();
     public void doneDownload();
@@ -15,6 +15,5 @@ public interface MovieStreamerState {
     public void removed();
     public void turnOn();
     public void turnOff();
-
 
 }

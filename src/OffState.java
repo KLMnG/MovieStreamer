@@ -1,4 +1,83 @@
-public class OffState {
+public class OffState implements MovieStreamerState{
 
+    private MovieStreamer context;
 
+    public OffState(MovieStreamer streamer){
+        this.context = streamer;
+    }
+
+    @Override
+    public void movieOn() {
+
+    }
+
+    @Override
+    public void doneDownload() {
+
+    }
+
+    @Override
+    public void holdMovie() {
+
+    }
+
+    @Override
+    public void downloadError() {
+
+    }
+
+    @Override
+    public void restart() {
+
+    }
+
+    @Override
+    public void downloadAborted() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void errorFixed() {
+
+    }
+
+    @Override
+    public void moviePending() {
+
+    }
+
+    @Override
+    public void internetOff() {
+
+    }
+
+    @Override
+    public void internetOn() {
+
+    }
+
+    @Override
+    public void fileRequest() {
+
+    }
+
+    @Override
+    public void removed() {
+
+    }
+
+    @Override
+    public void turnOn() {
+        context.setState(context.getOnState());
+    }
+
+    @Override
+    public void turnOff() {
+        //System.out.println("Already Off");
+    }
 }
