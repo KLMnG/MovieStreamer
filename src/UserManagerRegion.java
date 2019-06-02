@@ -13,7 +13,9 @@ public class UserManagerRegion extends OnState {
 
     @Override
     public void setState(MovieStreamerState state) {
-        this.currentState.setState(state);
+       this.currentState=state;
+       this.currentState.entry();
+       this.currentState.Do();
     }
 
     @Override

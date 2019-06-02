@@ -1,9 +1,12 @@
-public class OffState implements MovieStreamerState{
+public class OffState implements MovieStreamerState {
 
-    private MovieStreamer context;
+    private MovieStreamer streamer;
+    private String name;
 
-    public OffState(MovieStreamer streamer){
-        this.context = streamer;
+    public OffState(MovieStreamer streamer) {
+
+        this.streamer = streamer;
+        this.name = "OffState";
     }
 
     @Override
@@ -73,12 +76,13 @@ public class OffState implements MovieStreamerState{
 
     @Override
     public void turnOn() {
-        context.setState(context.getOnState());
+        exit();
+        streamer.setState(streamer.getOnState());
     }
 
     @Override
     public void turnOff() {
-        //SystemManager.out.println("Already Off");
+
     }
 
     @Override
@@ -87,13 +91,18 @@ public class OffState implements MovieStreamerState{
     }
 
     @Override
-    public void entry() {
+    public MovieStreamerState getCurrentState() {
+        return null;
+    }
 
+    @Override
+    public void entry() {
+        System.out.println("enter " + name + " state");
     }
 
     @Override
     public void exit() {
-
+        System.out.println("exit " + name + " state");
     }
 
     @Override
