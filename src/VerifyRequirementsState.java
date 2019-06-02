@@ -34,4 +34,82 @@ public class VerifyRequirementsState extends DownloadingRegion{
             superContext.setState(context.getSecondAttemptState());
         }
     }
+
+    @Override
+    public void movieOn() {
+
+    }
+
+    @Override
+    public void doneDownload() {
+
+    }
+
+    @Override
+    public void holdMovie() {
+
+    }
+
+    @Override
+    public void downloadError() {
+
+    }
+
+    @Override
+    public void restart() {
+
+    }
+
+    @Override
+    public void downloadAborted() {
+        if (this.context.getCurrentDownloadFile().getId() != 5){
+            //File need to be equal null
+            superContext.setState(context.getIdleState());
+        }
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void errorFixed() {
+
+    }
+
+    @Override
+    public void moviePending() {
+
+    }
+
+    @Override
+    public void internetOn() {
+
+    }
+
+    @Override
+    public void fileRequest() {
+
+    }
+
+    @Override
+    public void removed() {
+
+    }
+
+    @Override
+    public void turnOn() {
+
+    }
+
+    @Override
+    public void internetOff() {
+
+    }
+
+    @Override
+    public void turnOff() {
+
+    }
 }

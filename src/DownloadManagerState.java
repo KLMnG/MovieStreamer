@@ -1,20 +1,45 @@
-public class IdleState extends DownloadingRegion{
+public class DownloadManagerState extends InternetConnectedState{
+
 
     protected MovieStreamer context;
     private MovieStreamerState superContext;
 
-    public IdleState(MovieStreamer streamer,MovieStreamerState superContext) {
+
+    public DownloadManagerState(MovieStreamer streamer,MovieStreamerState superContext) {
         super(streamer,superContext);
         this.context = streamer;
         this.superContext = superContext;
     }
 
+
     @Override
     public void entry() {
-        System.out.println("enter Idle state");
-        if (context.getFileReuqestQueue().size() >= 0){
-            exit();
-        }
+        System.out.println("enter InternetDisconnected state");
+    }
+
+    @Override
+    public void exit() {
+        System.out.println("exit InternetDisconnected state");
+    }
+
+    @Override
+    public void moviePending() {
+
+    }
+
+    @Override
+    public void fileRequest() {
+        context.getFileReuqestQueue().add(null);
+    }
+
+    @Override
+    public void downloadAborted() {
+        if (context.getFileReuqestQueue().contains(null))
+            context.getFileReuqestQueue().remove(null);
+    }
+
+    @Override
+    public void internetOff() {
     }
 
     @Override
@@ -23,31 +48,8 @@ public class IdleState extends DownloadingRegion{
     }
 
     @Override
-    public void exit() {
-        System.out.println("exit Idle state");
-        superContext.setState(context.getVerifyRequirementState());
-    }
-
-    @Override
-    public void moviePending() {
-        exit();
-    }
-
-    @Override
-    public void downloadAborted() {
-        if (this.context.getCurrentDownloadFile().getId() != 5){
-            //File need to be equal null
-            superContext.setState(context.getIdleState());
-        }
-    }
-
-    public void timeEvent(){
-        exit();
-    }
-
-
-    @Override
     public void movieOn() {
+
     }
 
     @Override
@@ -86,22 +88,12 @@ public class IdleState extends DownloadingRegion{
     }
 
     @Override
-    public void fileRequest() {
-        this.moviePending();
-    }
-
-    @Override
     public void removed() {
 
     }
 
     @Override
     public void turnOn() {
-
-    }
-
-    @Override
-    public void internetOff() {
 
     }
 
