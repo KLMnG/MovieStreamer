@@ -16,5 +16,6 @@ public interface MovieStreamerState extends State{
     public void turnOn();
     public void turnOff();
     public void setState(MovieStreamerState state);
+    public MovieStreamerState getCurrentState();
 
 }

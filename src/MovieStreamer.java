@@ -50,7 +50,7 @@ public class MovieStreamer {
     public MovieStreamer() {
         onState = new OnState(this);
         offState = new OffState(this);
-        userManagerRegion = new UserManagerRegion(this,);
+        userManagerRegion = new UserManagerRegion(this,onState);
         beginnerState=new BeginnerState(this,userManagerRegion);
         advencedState=new AdvancedState(this,userManagerRegion);
         professionalState=new ProfessionalState(this,userManagerRegion);
