@@ -89,8 +89,8 @@ public class MovieStreamerRegion extends InternetConnectedState{
     }
 
     @Override
-    public void fileRequest() {
-        this.currentState.fileRequest();
+    public void fileRequest(File f) {
+        this.currentState.fileRequest(f);
     }
 
     @Override
@@ -108,10 +108,4 @@ public class MovieStreamerRegion extends InternetConnectedState{
         this.currentState.turnOff();
     }
 
-    @Override
-    public void setState(OnState state) {
-        this.currentState=state;
-        this.currentState.entry();
-        this.currentState.Do();
-    }
 }

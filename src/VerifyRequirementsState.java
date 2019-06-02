@@ -89,7 +89,7 @@ public class VerifyRequirementsState extends DownloadingRegion{
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(File f) {
 
     }
 

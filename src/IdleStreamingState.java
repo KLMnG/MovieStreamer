@@ -89,7 +89,7 @@ public class IdleStreamingState extends InternetConnectionRegion {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(File f) {
     }
 
     @Override
@@ -102,9 +102,5 @@ public class IdleStreamingState extends InternetConnectionRegion {
 
     @Override
     public void turnOff() {
-    }
-
-    @Override
-    public void setState(OnState state) {
     }
 }

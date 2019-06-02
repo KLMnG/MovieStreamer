@@ -4,7 +4,7 @@ public class PauseState extends MovieStreamerRegion{
     String name;
 
     public PauseState(MovieStreamer streamer, MovieStreamerState superContext) {
-        super(streamer);
+        super(streamer,superContext);
         this.streamer = streamer;
         this.superContext = superContext;
         this.name = "PauseState";
@@ -84,7 +84,7 @@ public class PauseState extends MovieStreamerRegion{
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(File f) {
     }
 
     @Override
@@ -101,6 +101,6 @@ public class PauseState extends MovieStreamerRegion{
 
     @Override
     public MovieStreamerState getCurrentState() {
-        return null;
+        return this;
     }
 }

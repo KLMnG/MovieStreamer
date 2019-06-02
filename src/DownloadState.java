@@ -86,7 +86,7 @@ public class DownloadState extends DownloadingRegion {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(File f) {
 
     }
 

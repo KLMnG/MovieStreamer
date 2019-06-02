@@ -77,7 +77,7 @@ public class ProfessionalState extends UserManagerRegion{
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(File f) {
 
     }
 

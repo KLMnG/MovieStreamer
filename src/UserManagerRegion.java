@@ -90,8 +90,8 @@ public class UserManagerRegion extends OnState {
     }
 
     @Override
-    public void fileRequest() {
-        this.currentState.fileRequest();
+    public void fileRequest(File f) {
+        this.currentState.fileRequest(f);
     }
 
     @Override
@@ -109,10 +109,4 @@ public class UserManagerRegion extends OnState {
         this.currentState.turnOff();
     }
 
-    @Override
-    public void setState(OnState state) {
-       this.currentState=state;
-       this.currentState.entry();
-       this.currentState.Do();
-    }
 }

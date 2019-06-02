@@ -96,7 +96,7 @@ public class SecondAttemptState extends DownloadingRegion{
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(File f) {
 
     }
 

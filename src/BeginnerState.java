@@ -75,7 +75,7 @@ public class BeginnerState extends UserManagerRegion{
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(File f) {
 
     }
 

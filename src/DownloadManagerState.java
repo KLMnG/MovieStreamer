@@ -28,8 +28,8 @@ public class DownloadManagerState extends InternetConnectedState{
     }
 
     @Override
-    public void fileRequest() {
-        context.getFileReuqestQueue().add(null);
+    public void fileRequest(File f) {
+        context.getFileReuqestQueue().add(f);
     }
 
     @Override

@@ -92,7 +92,7 @@ public class OffState implements MovieStreamerState {
 
     @Override
     public MovieStreamerState getCurrentState() {
-        return null;
+        return this;
     }
 
     @Override

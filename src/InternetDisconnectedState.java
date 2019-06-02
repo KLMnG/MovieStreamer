@@ -84,7 +84,7 @@ public class InternetDisconnectedState extends InternetConnectionRegion{
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(File f) {
 
     }
 

@@ -88,7 +88,7 @@ public class DownloadRegion extends InternetConnectedState {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(File f) {
         this.moviePending();
     }
 
