@@ -26,7 +26,6 @@ public class MovieStreamerRegion extends InternetConnectedState{
     @Override
     public void exit() {
         this.currentState.exit();
-
     }
 
     @Override

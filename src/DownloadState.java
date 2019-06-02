@@ -21,6 +21,7 @@ public class DownloadState extends DownloadingRegion {
         }
         context.getSystemManager().setAvailableSpace(context.getSystemManager().getAvailableSpace() - context.getCurrentDownloadFile().getRequiredSize());
         exit();
+        context.doneDownloadFile();
         superContext.setState(context.getIdleState());
     }
 

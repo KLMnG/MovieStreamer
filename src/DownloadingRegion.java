@@ -4,22 +4,30 @@ public class DownloadingRegion extends InternetConnectedState {
 
     private MovieStreamerState superContext;
     private MovieStreamerState currentState;
+    private MovieStreamerState downloadHistory;
 
     public DownloadingRegion(MovieStreamer streamer,MovieStreamerState superContext) {
         super(streamer,superContext);
         this.context = streamer;
         this.superContext = superContext;
+
+        downloadHistory = null;
+        currentState = null;
+
     }
 
     public void setState(MovieStreamerState state){
         this.currentState = state;
+        downloadHistory = state;
         this.currentState.entry();
         this.currentState.Do();
     }
 
-    @Override
     public void entry() {
-
+        currentState = context.getIdleState();
+        if (downloadHistory != null)
+            currentState = downloadHistory;
+        setState(currentState);
     }
 
     @Override

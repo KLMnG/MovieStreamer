@@ -18,6 +18,9 @@ public class InternetConnectedState extends InternetConnectionRegion{
 
     @Override
     public void entry() {
+        currentDownloadManagerStateState = context.getDownloadManagerState();
+        currentDownloadRegionState = context.getDownloadRegionState();
+        currentMovieStreamerRegion = context.getMovieStreamerRegion();
         System.out.println("enter InternetConnected state");
         currentDownloadManagerStateState.entry();
         currentDownloadRegionState.entry();
@@ -38,7 +41,7 @@ public class InternetConnectedState extends InternetConnectionRegion{
     @Override
     public void internetOff() {
         exit();
-        superContext.setState(context.getInternetConnectedState());
+        superContext.setState(context.getInternetDisconnectedState());
     }
 
     @Override
@@ -142,5 +145,6 @@ public class InternetConnectedState extends InternetConnectionRegion{
         currentDownloadManagerStateState.turnOff();
         currentDownloadRegionState.turnOff();
         currentMovieStreamerRegion.turnOff();
+        exit();
     }
 }

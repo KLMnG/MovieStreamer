@@ -17,12 +17,13 @@ public class ConnectionStatusState extends OnState{
 
     @Override
     public void entry() {
+        System.out.println("enter ConnectionStatus state");
         //context.CheckConnection();
     }
 
     @Override
     public void exit() {
-
+        System.out.println("exit ConnectionStatus state");
     }
 
     @Override

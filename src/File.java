@@ -4,10 +4,10 @@ public class File {
     private int downloaded;
     private int streamedTime;
 
-    public File(int id, int requiredSize, int downloaded) {
+    public File(int id, int requiredSize) {
         Id = id;
         this.requiredSize = requiredSize;
-        this.downloaded = downloaded;
+        this.downloaded = 0;
         streamedTime=0;
     }
 

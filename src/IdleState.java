@@ -12,8 +12,9 @@ public class IdleState extends DownloadingRegion{
     @Override
     public void entry() {
         System.out.println("enter Idle state");
-        if (context.getFileReuqestQueue().size() >= 0){
+        if (context.getFileReuqestQueue().size() > 0){
             exit();
+            superContext.setState(context.getVerifyRequirementState());
         }
     }
 
@@ -25,12 +26,13 @@ public class IdleState extends DownloadingRegion{
     @Override
     public void exit() {
         System.out.println("exit Idle state");
-        superContext.setState(context.getVerifyRequirementState());
+
     }
 
     @Override
     public void moviePending() {
         exit();
+        superContext.setState(context.getVerifyRequirementState());
     }
 
     @Override
@@ -43,6 +45,7 @@ public class IdleState extends DownloadingRegion{
 
     public void timeEvent(){
         exit();
+        superContext.setState(context.getVerifyRequirementState());
     }
 
 

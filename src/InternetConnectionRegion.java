@@ -26,7 +26,7 @@ public class InternetConnectionRegion extends OnState{
 
     @Override
     public void exit() {
-
+        currentState.exit();
     }
 
     @Override
@@ -81,13 +81,11 @@ public class InternetConnectionRegion extends OnState{
 
     @Override
     public void internetOff() {
-        this.setState(context.getInternetDisconnectedState());
         currentState.internetOff();
     }
 
     @Override
     public void internetOn() {
-        this.setState(context.getInternetConnectedState());
         currentState.internetOn();
     }
 
@@ -108,6 +106,6 @@ public class InternetConnectionRegion extends OnState{
 
     @Override
     public void turnOff() {
-        currentState.turnOff();
+
     }
 }

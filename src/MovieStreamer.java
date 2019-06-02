@@ -13,7 +13,8 @@ public class MovieStreamer {
 
     //OnState
     private MovieStreamerState internetConnectionRegion;
-    private MovieStreamerState connectionStatusRegion;
+    private MovieStreamerState connectionStatusState;
+    private MovieStreamerState userManagerRegion;
 
     //InternetConnection
     private MovieStreamerState internetConnectedState;
@@ -27,9 +28,12 @@ public class MovieStreamer {
     private MovieStreamerState dErrorState;
     private MovieStreamerState verifyRequirementState;
 
-    //DeviceManagerRegion
-    private MovieStreamerState deviceManagerState;
 
+
+
+
+    private MovieStreamerState movieStreamerRegion;
+    private MovieStreamerState downloadManagerState;
     //MovieStreamerRegion
     private MovieStreamerState idleStreamingState;
     private MovieStreamerState pauseState;
@@ -41,22 +45,50 @@ public class MovieStreamer {
     private File currentDownloadFile;
 
     private MovieStreamerState advancedState;
-    private MovieStreamerState userManagerRegion;
+
     private MovieStreamerState beginnerState;
-    private MovieStreamerState advencedState;
+
     private MovieStreamerState professionalState;
     private User user;
 
     public MovieStreamer() {
         onState = new OnState(this);
         offState = new OffState(this);
+
+        internetConnectionRegion = new InternetConnectionRegion(this,onState);
+        connectionStatusState = new ConnectionStatusState(this,onState);
         userManagerRegion = new UserManagerRegion(this,onState);
+
+        internetDisconnectedState = new InternetDisconnectedState(this,internetConnectionRegion);
+        internetConnectedState = new InternetConnectedState(this,internetConnectionRegion);
+
+        movieStreamerRegion = new MovieStreamerRegion(this,internetConnectedState);
+        downloadRegionState = new DownloadingRegion(this,internetConnectedState);
+        downloadManagerState = new DownloadManagerState(this,internetConnectedState);
+
+        idleStreamingState = new IdleStreamingState(this,movieStreamerRegion);
+        streamingState = new StreamingState(this,movieStreamerRegion);
+        pauseState = new PauseState(this,movieStreamerRegion);
+
+
+        idleState = new IdleState(this,internetConnectedState);
+        verifyRequirementState = new VerifyRequirementsState(this,internetConnectedState);
+        secondAttemptState = new SecondAttemptState(this,internetConnectedState);
+        downloadState = new DownloadState(this,internetConnectedState);
+        dErrorState = new DErrorState(this,internetConnectedState);
+
+
+
         beginnerState=new BeginnerState(this,userManagerRegion);
-        advencedState=new AdvancedState(this,userManagerRegion);
+        advancedState=new AdvancedState(this,userManagerRegion);
         professionalState=new ProfessionalState(this,userManagerRegion);
+
+
         user = new User();
         fileReuqestQueue = new PriorityQueue<>();
         systemManager = new SystemManager(false,100);
+
+        setState(offState);
     }
 
 
@@ -74,8 +106,8 @@ public class MovieStreamer {
         return internetConnectionRegion;
     }
 
-    public MovieStreamerState getConnectionStatusRegion() {
-        return connectionStatusRegion;
+    public MovieStreamerState getConnectionStatusState() {
+        return connectionStatusState;
     }
 
     public MovieStreamerState getInternetConnectedState() {
@@ -110,8 +142,8 @@ public class MovieStreamer {
         return verifyRequirementState;
     }
 
-    public MovieStreamerState getDeviceManagerState() {
-        return deviceManagerState;
+    public MovieStreamerState getDownloadManagerState() {
+        return downloadManagerState;
     }
 
     public MovieStreamerState getIdleStreamingState() {
@@ -132,6 +164,8 @@ public class MovieStreamer {
 
     public void setState(MovieStreamerState state){
         this.currentState = state;
+        currentState.entry();
+        currentState.Do();
     }
 
     public void increaseUserLevel(int i) {
@@ -176,7 +210,53 @@ public class MovieStreamer {
         return professionalState;
     }
 
+    public double getDownLoadSpeed() {
+        return downLoadSpeed;
+    }
+
+    public MovieStreamerState getUserManagerRegion() {
+        return userManagerRegion;
+    }
+
+    public MovieStreamerState getMovieStreamerRegion() {
+        return movieStreamerRegion;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
     public void decreaseUserLevel(int i) {
         this.user.setLevel(this.user.getLevel() - i);
+    }
+
+    public void addDownloadQueue(File f) {
+        currentState.fileRequest(f);
+    }
+
+    public void turnSystemOff() {
+        currentState.turnOff();
+    }
+
+    public void turnSystemOn() {
+        currentState.turnOn();
+    }
+
+    public void turnInternetOff() {
+        systemManager.setConnectionStatus(false);
+        currentState.internetOff();
+    }
+
+    public void turnInternetOn() {
+        systemManager.setConnectionStatus(true);
+        currentState.internetOn();
+    }
+
+    public void setAvailableSpace(int diskSize) {
+        systemManager.setAvailableSpace(diskSize);
+    }
+
+    public void doneDownloadFile() {
+        currentState.doneDownload();
     }
 }

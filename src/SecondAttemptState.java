@@ -1,9 +1,9 @@
-public class SecondAttemptState extends DownloadingRegion{
+public class SecondAttemptState extends DownloadingRegion {
     protected MovieStreamer context;
     private MovieStreamerState superContext;
 
-    public SecondAttemptState(MovieStreamer streamer,MovieStreamerState superContext) {
-        super(streamer,superContext);
+    public SecondAttemptState(MovieStreamer streamer, MovieStreamerState superContext) {
+        super(streamer, superContext);
         this.context = streamer;
         this.superContext = superContext;
     }
@@ -11,32 +11,30 @@ public class SecondAttemptState extends DownloadingRegion{
     @Override
     public void entry() {
         System.out.println("enter SecondAttempt state");
-        if (context.getSystemManager().getAvailableSpace() >= context.getCurrentDownloadFile().getRequiredSize()){
+        if (context.getSystemManager().getAvailableSpace() >= context.getCurrentDownloadFile().getRequiredSize()) {
             context.getCurrentDownloadFile().setDownloaded(0);
+            exit();
             superContext.setState(context.getDownloadState());
-        }
-        else{
-            superContext.setState(context.getIdleState());
         }
     }
 
     @Override
     public void Do() {
-
+        timeEvent();
     }
 
-    public void timeEvent(){
+    public void timeEvent() {
         exit();
+        superContext.setState(context.getIdleState());
     }
 
     @Override
     public void exit() {
         System.out.println("exit SecondAttempt state");
-        if (context.getSystemManager().getAvailableSpace() >= context.getCurrentDownloadFile().getRequiredSize()){
+        if (context.getSystemManager().getAvailableSpace() >= context.getCurrentDownloadFile().getRequiredSize()) {
             context.getCurrentDownloadFile().setDownloaded(0);
             superContext.setState(context.getDownloadState());
-        }
-        else{
+        } else {
             superContext.setState(context.getIdleState());
         }
     }
@@ -69,8 +67,9 @@ public class SecondAttemptState extends DownloadingRegion{
 
     @Override
     public void downloadAborted() {
-        if (this.context.getCurrentDownloadFile().getId() != 5){
-            //File need to be equal null
+        if (this.context.getCurrentDownloadFile().getId() != 5) {
+            context.setCurrentDownloadFile(null);
+            exit();
             superContext.setState(context.getIdleState());
         }
     }

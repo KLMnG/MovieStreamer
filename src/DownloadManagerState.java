@@ -14,12 +14,12 @@ public class DownloadManagerState extends InternetConnectedState{
 
     @Override
     public void entry() {
-        System.out.println("enter InternetDisconnected state");
+        System.out.println("enter DownloadManager state");
     }
 
     @Override
     public void exit() {
-        System.out.println("exit InternetDisconnected state");
+        System.out.println("exit DownloadManager state");
     }
 
     @Override

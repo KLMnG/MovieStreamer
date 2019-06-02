@@ -19,6 +19,9 @@ public class OnState implements MovieStreamerState{
 
     @Override
     public void entry() {
+        userManagerRegion = context.getUserManagerRegion();
+        internetConnectionRegion = context.getInternetConnectionRegion();
+        connectionStatusState = context.getConnectionStatusState();
         System.out.println("enter On state");
         userManagerRegion.entry();
         internetConnectionRegion.entry();
@@ -44,10 +47,12 @@ public class OnState implements MovieStreamerState{
 
     @Override
     public void turnOff() {
+        exit();
         context.setState(context.getOffState());
     }
 
     public OnState(MovieStreamer streamer){
+
         this.context = streamer;
     }
 

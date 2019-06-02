@@ -106,10 +106,6 @@ public class StreamingState extends MovieStreamerRegion {
     }
 
     @Override
-    public void setState(OnState state) {
-    }
-
-    @Override
     public MovieStreamerState getCurrentState() {
         return this;
     }
