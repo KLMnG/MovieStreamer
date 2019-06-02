@@ -65,7 +65,7 @@ public class OffState implements MovieStreamerState {
     }
 
     @Override
-    public void fileRequest() {
+    public void fileRequest(File f) {
 
     }
 
