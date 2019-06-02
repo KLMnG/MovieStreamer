@@ -24,7 +24,7 @@ public class DownloadingRegion extends InternetConnectedState {
 
     @Override
     public void exit() {
-
+        currentState.exit();
     }
 
     @Override
@@ -88,8 +88,8 @@ public class DownloadingRegion extends InternetConnectedState {
     }
 
     @Override
-    public void fileRequest() {
-        currentState.fileRequest();
+    public void fileRequest(File f) {
+        currentState.fileRequest(f);
     }
 
     @Override

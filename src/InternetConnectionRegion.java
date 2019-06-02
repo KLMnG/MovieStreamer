@@ -21,7 +21,7 @@ public class InternetConnectionRegion extends OnState{
 
     @Override
     public void entry() {
-
+        this.setState(context.getInternetDisconnectedState());
     }
 
     @Override
@@ -92,8 +92,8 @@ public class InternetConnectionRegion extends OnState{
     }
 
     @Override
-    public void fileRequest() {
-        currentState.fileRequest();
+    public void fileRequest(File f) {
+        currentState.fileRequest(f);
     }
 
     @Override
