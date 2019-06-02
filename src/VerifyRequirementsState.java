@@ -11,8 +11,12 @@ public class VerifyRequirementsState extends DownloadingRegion{
 
     @Override
     public void entry() {
+        System.out.println("enter VerifyRequirements state");
         File f = context.getFileReuqestQueue().poll();
         context.setCurrentDownloadFile(f);
+        if (context.getSystemManager().getAvailableSpace() >= context.getCurrentDownloadFile().getRequiredSize())
+            context.getCurrentDownloadFile().setDownloaded(0);
+        exit();
     }
 
     @Override
@@ -22,8 +26,8 @@ public class VerifyRequirementsState extends DownloadingRegion{
 
     @Override
     public void exit() {
+        System.out.println("exit VerifyRequirements state");
         if (context.getSystemManager().getAvailableSpace() >= context.getCurrentDownloadFile().getRequiredSize()){
-            context.getCurrentDownloadFile().setDownloaded(0);
             superContext.setState(context.getDownloadState());
         }
         else{

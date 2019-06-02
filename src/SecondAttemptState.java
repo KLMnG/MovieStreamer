@@ -10,6 +10,7 @@ public class SecondAttemptState extends DownloadingRegion{
 
     @Override
     public void entry() {
+        System.out.println("enter SecondAttempt state");
         if (context.getSystemManager().getAvailableSpace() >= context.getCurrentDownloadFile().getRequiredSize()){
             context.getCurrentDownloadFile().setDownloaded(0);
             superContext.setState(context.getDownloadState());
@@ -30,6 +31,7 @@ public class SecondAttemptState extends DownloadingRegion{
 
     @Override
     public void exit() {
+        System.out.println("exit SecondAttempt state");
         if (context.getSystemManager().getAvailableSpace() >= context.getCurrentDownloadFile().getRequiredSize()){
             context.getCurrentDownloadFile().setDownloaded(0);
             superContext.setState(context.getDownloadState());

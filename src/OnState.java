@@ -1,12 +1,11 @@
 public class OnState implements MovieStreamerState{
 
-    private OnState userManagerRegion;
-    private OnState internetConnectionRegion;
-    private OnState connectionStatusRegion;
+    private MovieStreamerState userManagerRegion;
+    private MovieStreamerState internetConnectionRegion;
+    private MovieStreamerState connectionStatusRegion;
 
     protected MovieStreamer context;
 
-    private MovieStreamerState downloadHistory;
 
     @Override
     public void setState(MovieStreamerState state) {

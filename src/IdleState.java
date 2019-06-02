@@ -11,18 +11,20 @@ public class IdleState extends DownloadingRegion{
 
     @Override
     public void entry() {
-
-    }
-
-    @Override
-    public void Do() {
+        System.out.println("enter Idle state");
         if (context.getFileReuqestQueue().size() >= 0){
             exit();
         }
     }
 
     @Override
+    public void Do() {
+
+    }
+
+    @Override
     public void exit() {
+        System.out.println("exit Idle state");
         superContext.setState(context.getVerifyRequirementState());
     }
 
