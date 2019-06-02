@@ -19,10 +19,19 @@ public class InternetConnectedState extends InternetConnectionRegion{
     @Override
     public void entry() {
         System.out.println("enter InternetConnected state");
+        currentDownloadManagerStateState.entry();
+        currentDownloadRegionState.entry();
+        currentMovieStreamerRegion.entry();
+        currentDownloadManagerStateState.Do();
+        currentDownloadRegionState.Do();
+        currentMovieStreamerRegion.Do();
     }
 
     @Override
     public void exit() {
+        currentDownloadManagerStateState.exit();
+        currentDownloadRegionState.exit();
+        currentMovieStreamerRegion.exit();
         System.out.println("exit InternetConnected state");
     }
 
@@ -108,10 +117,10 @@ public class InternetConnectedState extends InternetConnectionRegion{
     }
 
     @Override
-    public void fileRequest() {
-        currentDownloadManagerStateState.fileRequest();
-        currentDownloadRegionState.fileRequest();
-        currentMovieStreamerRegion.fileRequest();
+    public void fileRequest(File f) {
+        currentDownloadManagerStateState.fileRequest(f);
+        currentDownloadRegionState.fileRequest(f);
+        currentMovieStreamerRegion.fileRequest(f);
     }
 
     @Override

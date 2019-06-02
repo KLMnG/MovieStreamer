@@ -11,7 +11,7 @@ public interface MovieStreamerState extends State{
     public void moviePending();
     public void internetOff();
     public void internetOn();
-    public void fileRequest();
+    public void fileRequest(File f);
     public void removed();
     public void turnOn();
     public void turnOff();
