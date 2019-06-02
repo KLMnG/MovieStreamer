@@ -1,4 +1,4 @@
-public class DownloadRegion extends OnState {
+public class DownloadRegion extends InternetConnectedState {
 
 
     protected MovieStreamer context;
